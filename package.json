@@ -1,0 +1,23 @@
+{
+  "name": "finalproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thanggtrann12/FinalProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thanggtrann12/FinalProject/issues"
+  },
+  "homepage": "https://github.com/thanggtrann12/FinalProject#readme",
+  "dependencies": {
+    "bootstrap": "^4.6.0",
+    "moment": "^2.29.1"
+  }
+}
