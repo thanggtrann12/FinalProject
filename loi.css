@@ -1,0 +1,429 @@
+h1 {
+    color: rgba(255, 255, 255, 0.979);
+    text-align: center;
+}
+
+h2 {
+    color: rgb(255, 255, 255, 0.979);
+    text-align: center;
+}
+
+.sinhvien {
+    width: 100px;
+    color: rgb(218, 22, 22);
+    border-collapse: collapse;
+    position: absolute;
+    top: 300px;
+}
+.sv {
+    width: 350px;
+    color: #111;
+    border: 3px solid red;
+    border-collapse: inherit;
+    position: absolute;
+    top: 170px;
+    left: 20%;
+    background: white;
+}
+
+.ms {
+    width: 250px;
+    color: rgb(218, 22, 22);
+    border-collapse: collapse;
+    position: absolute;
+    top: 595px;
+    left: 139px;
+}
+
+.bang {
+    width: 400px;
+    color: #111;
+    border: 5px solid red;
+    border-collapse: collapse;
+    position: absolute;
+    top: 200px;
+    left: 37%;
+    background: white;
+}
+
+.texttable {
+    padding: 20px;
+    text-align: center;
+    color: #212dd2;
+    font-size: 15px;
+}
+.textsv {
+    padding: 30px;
+    text-align: center;
+    color: #212dd2;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+P {
+    color: rgb(170, 247, 228);
+    height: auto;
+    width: 100%;
+    vertical-align: middle;
+    align-items: center;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 60px;
+}
+
+body {
+    background-image:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(bg1.png);
+    height: 100vh;
+    background-size: cover;
+    background-position:center;
+}
+
+.anh {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: white;
+    width: 120px;
+    min-height: 3cm;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+}
+
+.anh2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: white;
+    width: 120px;
+    min-height: 3cm;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 300px;
+    min-height: 3cm;
+    position: absolute;
+    top: 230px;
+    left: 50px;
+    font-weight: 900;
+}
+
+.btn {
+    position: relative;
+    height: 56px;
+}
+
+.btn input {
+    position: relative;
+    width: 250px;
+    height: 50px;
+    border-radius: 25px;
+    outline: none;
+    cursor: none;
+    appearance: none;
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    box-shadow: 1px 6px 11px #000000;
+}
+
+.btn input:before,
+.btn input:after {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #111;
+}
+
+.btn input:before {
+    content: "TỰ ĐỘNG";
+    left: 40px;
+}
+
+.btn input:after {
+    content: "CHỈNH TAY";
+    right: 40px;
+}
+
+.btn label {
+    z-index: 1;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    border-radius: 20px;
+}
+
+.btn .btn-1 input {
+    transition: 0.2s -0.1s;
+}
+
+.btn.btn-1 input:checked {
+    background: #fff;
+    content: "TỰ ĐỘNG";
+    left: 40px;
+}
+
+.btn.btn-1 input:checked:before {
+    color: #111;
+    transition: color 0.5s 0.2s;
+}
+
+.btn.btn-1 input:checked:after {
+    color: #111;
+    transition: color 0.5s;
+}
+
+.btn.btn-1 input:checked+label {
+    left: 10px;
+    right: 125px;
+    background: #d2ab21;
+    transition: left 0.5s, right 0.4s 0.2s;
+}
+
+.btn.btn-1 input:not(:checked) {
+    background: #d2ab21;
+    transition: background 0.5s -0.1s;
+}
+
+.btn.btn-1 input:not(:checked)::before {
+    color: #111;
+    transition: color 0.5s;
+}
+
+.btn.btn-1 input:not(:checked)::after {
+    color: #1e1e1e;
+    transition: color 0.5s 0.2s;
+}
+
+.btn.btn-1 input:not(:checked)+label {
+    left: 125px;
+    right: 10px;
+    background: #fff;
+    transition: left 0.4s 0.2s, right 0.5s, background 0.35s -0.1s;
+}
+
+.button-box {
+    width: 220px;
+    margin: 10px auto;
+    position: relative;
+    border-radius: 30px;
+    background: #fff;
+}
+.button-box1 {
+    width: 300px;
+    height: 100px;
+    margin: 10px auto;
+    position: relative;
+    border-radius: 0px;
+    background: #fff;
+}
+
+.toggle-btn2 {
+    padding: 10px 40px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    text-align: center;
+    font-weight: 600;
+}
+
+#btn2 {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: #23e633;
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
+.toggle-btn3 {
+    padding: 10px 40px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    text-align: center;
+    font-weight: 600;
+}
+
+#btn3 {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: #23e633;
+    border-radius: 30px;
+    transition: 0.5s;
+}
+#btn1 {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    background: #23e633;
+    border-radius: 0px;
+    transition: 0.5s;
+}
+.toggle-btn11 {
+        padding: 10px 25px;
+        cursor: pointer;
+        background: transparent;
+        border: 0;
+        outline: none;
+        position: relative;
+        text-align: center;
+        font-size: 20px;
+        top: 30px;
+        font-weight: 600;
+}
+
+
+.toggle-btn4 {
+    padding: 10px 40px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    text-align: center;
+    font-weight: 600;
+}
+
+#btn4 {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: #23e633;
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
+.toggle-btn5 {
+    padding: 10px 40px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    text-align: center;
+    font-weight: 600;
+}
+
+#btn5 {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: #23e633;
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
+.form-box {
+    color: rgb(188, 248, 237);
+    left: 78%;
+    position: absolute;
+    top: 190px;
+    font-weight: 900;
+}
+
+.quat {
+    color: rgb(188, 248, 237);
+    left: 78%;
+    position: absolute;
+    top: 280px;
+    font-weight: 900;
+}
+
+.bom {
+    color: rgb(188, 248, 237);
+    left: 78%;
+    position: absolute;
+    top: 370px;
+    font-weight: 900;
+}
+.phunsuong {
+    color: rgb(188, 248, 237);
+    left: 78%;
+    position: absolute;
+    top: 460px;
+    font-weight: 900;
+}
+.checkbox {
+	opacity: 0;
+	position: absolute;
+}
+.label {
+	background-color: rgb(255, 255, 0);
+	border-radius: 0%;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5px;
+	position: relative;
+	height: 50px;
+	width: 200px;
+	transform: scale(1.5);
+}
+.label .ball {
+	background-color: rgb(0, 0, 255);
+	border-radius: 0%;
+	position: absolute;
+	top: 2px;
+	left: 5px;
+	height: 56px;
+	width: 100px;
+	transform: translateX(0px);
+	transition: transform 0.2s linear;
+}
+.checkbox:checked + .label .ball {
+	transform: translateX(100px);
+}
+
+.text1 {
+	color: #ff0000;
+    position: absolute;
+    font-size: 15px;
+    padding: 10px 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    text-align: center;
+}
+.text2 {
+	color: #ff0000;
+    position: absolute;
+    font-size: 15px;
+    padding: 10px 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    text-align: center;
+}
