@@ -110,3 +110,12 @@ body {
 .full-height {
   height: 100vh;
 }
+
+.value {
+  font-size: 30px;
+}
+
+.nav-link:hover {
+  transition: all ease 300ms;
+  color: rgb(0, 123, 255);
+}

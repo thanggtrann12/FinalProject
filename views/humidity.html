@@ -4,77 +4,44 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-  />
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <title>Humidity Chart</title>
   </head>
   <body>
-    <div>
-      <p id="humi"></p>
-      <p id="chart-humidity" class="container"></p>
+    <div
+      class="vh-100 d-flex align-items-center"
+      style="
+        background: linear-gradient(
+          90deg,
+          rgba(2, 0, 36, 1) 19%,
+          rgba(81, 185, 224, 1) 90%
+        );
+      "
+    >
+      <div class="container">
+        <div class="text-left my-3">
+          <a href="index.html" class="text-white">Quay trở lại</a>
+        </div>
+        <p id="chart-humidity" class="bg-primary"></p>
+        <div class="text-center text-white">
+          Current
+          <span id="humi"></span>
+        </div>
+      </div>
     </div>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
-    <script>
-      const firebaseConfig = {
-        apiKey: "AIzaSyA_fac89wpzdEv-m4A8iemVDEgwaB3qwhc",
-        authDomain: "iots-43546.firebaseapp.com",
-        databaseURL:
-          "https://iots-43546-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "iots-43546",
-        storageBucket: "iots-43546.appspot.com",
-        messagingSenderId: "448994359206",
-        appId: "1:448994359206:web:ca80fc8b42edb00fa08167",
-        measurementId: "G-3K8J69RXH7",
-      };
-
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-
-      var chartS = new Highcharts.Chart({
-        chart: { renderTo: "chart-humidity" },
-        title: { text: "BIỂU ĐỒ ĐỘ ẨM" },
-        time: {
-            useUTC: false
-        },
-        series: [
-          {
-            showInLegend: false,
-            data: [],
-          },
-        ],
-        plotOptions: {
-          line: { animation: false, dataLabels: { enabled: true } },
-          series: { color: "#18009c" },
-        },
-        xAxis: {
-          type: "datetime",
-          dateTimeLabelFormats: { second: "%H:%M:%S" },
-        },
-        yAxis: {
-          title: { text: "ĐỘ ẨM (%)" },
-        },
-        credits: { enabled: false },
-      });
-      setInterval(function () {
-        var x = new Date().getTime(),
-          y = parseInt(document.getElementById("humi").innerText);
-        //console.log(this.responseText);
-        if (chartS.series[0].data.length > 40) {
-          chartT.series[0].addPoint([x, y], true, true, true);
-        } else {
-          chartS.series[0].addPoint([x, y], true, false, true);
-        }
-      }, 3000);
-      var dbHumi = firebase.database().ref().child("DỮ LIỆU/ĐỘ ẨM");
-      var Humidity = document.getElementById("humi");
-      dbHumi.on("value", (snap) => (Humidity.innerText = snap.val() + " %"));
-
-    </script>
+    <script type="module" src="../services/chartHumidity.js"></script>
   </body>
 </html>

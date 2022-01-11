@@ -5,76 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    
+
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-  />
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
     <title>Tempature Chart</title>
   </head>
   <body>
-    <div>
-      <p id="temp"></p>
-      <p id="chart-temperature" class="container"></p>
+    <div
+      class="vh-100 d-flex align-items-center"
+      style="
+        background: linear-gradient(
+          90deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(198, 67, 67, 1) 69%
+        );
+      "
+    >
+      <div class="container">
+        <div class="text-left my-3">
+          <a href="index.html" class="text-white">Quay trở lại</a>
+        </div>
+        <p id="chart-temperature"></p>
+        <div class="text-center text-white">
+          Current:
+          <span id="temp"></span>
+        </div>
+      </div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
-    <script>
-      const firebaseConfig = {
-        apiKey: "AIzaSyA_fac89wpzdEv-m4A8iemVDEgwaB3qwhc",
-        authDomain: "iots-43546.firebaseapp.com",
-        databaseURL:
-          "https://iots-43546-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "iots-43546",
-        storageBucket: "iots-43546.appspot.com",
-        messagingSenderId: "448994359206",
-        appId: "1:448994359206:web:ca80fc8b42edb00fa08167",
-        measurementId: "G-3K8J69RXH7",
-      };
-
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-
-      var chartT = new Highcharts.Chart({
-        chart: { renderTo: "chart-temperature" },
-        title: { text: "BIỂU ĐỒ NHIỆT ĐỘ" },
-        time: {
-            useUTC: false
-        },
-        series: [
-          {
-            showInLegend: false,
-            data: [],
-          },
-        ],
-        plotOptions: {
-          line: { animation: false, dataLabels: { enabled: true } },
-          series: { color: "#18009c" },
-        },
-        xAxis: {
-          type: "datetime",
-          dateTimeLabelFormats: { second: "%H:%M:%S" },
-        },
-        yAxis: {
-          title: { text: "NHIỆT ĐỘ (Celsius)" },
-        },
-        credits: { enabled: false },
-      });
-      setInterval(function () {
-        var x = new Date().getTime(),
-          y = parseInt(document.getElementById("temp").innerText);
-        //console.log(this.responseText);
-        if (chartT.series[0].data.length > 40) {
-          chartT.series[0].addPoint([x, y], true, true, true);
-        } else {
-          chartT.series[0].addPoint([x, y], true, false, true);
-        }
-      }, 3000); // read data delay
-      var dbTemp = firebase.database().ref().child("DỮ LIỆU/NHIỆT ĐỘ");
-      var temparute = document.getElementById("temp");
-      dbTemp.on("value", (snap) => (temparute.innerText = snap.val() + " °C"));
-        console.log(temparute.innerText);
-    </script>
+    <script src="../services/chartTempature.js"></script>
   </body>
 </html>
