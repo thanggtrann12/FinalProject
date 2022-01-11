@@ -13,7 +13,6 @@ const config = {
 // Initialize Firebase
 firebase.initializeApp(config);
 // firebase.analytics();
-
 const solid = document.getElementById("solid");
 const dbSolid = firebase.database().ref().child("DỮ LIỆU/ĐỘ ẨM ĐẤT");
 const huminity = document.getElementById("humi");
@@ -27,6 +26,7 @@ dbTemp.on("value", (snap) => (temparute.innerText = snap.val() + " °C"));
 // end
 
 function toggleCheckbox(element) {
+    console.log(element)
     let state;
     if (element.checked) {
         firebase.database().ref(element.id.toString()).set({ Status: "On" });
