@@ -37,8 +37,8 @@ function toggleCheckbox(element) {
 function mode(element) {
   let state;
   if (element.checked) {
-    firebase.database().ref(element.id.toString()).set({ Status: "Manual" });
+    firebase.database().ref(element.id.toString()).set("Manual");
   } else {
-    firebase.database().ref(element.id.toString()).set({ Status: "Auto" });
+    firebase.database().ref(element.id.toString()).set("Auto");
   }
 }
