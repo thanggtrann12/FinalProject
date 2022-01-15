@@ -1,0 +1,6 @@
+#chart-humidity,
+#chart-solid,
+#chart-temperature {
+  height: 600px;
+  width: 100%;
+}

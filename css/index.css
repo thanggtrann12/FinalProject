@@ -119,3 +119,7 @@ body {
   transition: all ease 300ms;
   color: rgb(0, 123, 255);
 }
+
+.sidebar-sticky {
+  font-size: 22px;
+}
