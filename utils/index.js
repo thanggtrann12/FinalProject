@@ -13,7 +13,7 @@ const config = {
 // Initialize Firebase
 firebase.initializeApp(config);
 // firebase.analytics();
-
+const dataList = { temp: null, humi: null, solid: null }
 const solid = document.getElementById("solid");
 const huminity = document.getElementById("humi");
 const temparute = document.getElementById("temp");
@@ -22,9 +22,45 @@ const dbSolid = firebase.database().ref().child("DỮ LIỆU/ĐỘ ẨM ĐẤT")
 const dbHumi = firebase.database().ref().child("DỮ LIỆU/ĐỘ ẨM");
 const dbTemp = firebase.database().ref().child("DỮ LIỆU/NHIỆT ĐỘ");
 
-dbSolid.on("value", (snap) => (solid.innerText = snap.val() + " %"));
-dbHumi.on("value", (snap) => (huminity.innerText = snap.val() + " %"));
-dbTemp.on("value", (snap) => (temparute.innerText = snap.val() + " °C"));
+const idPump = document.getElementById('TRẠNG THÁI MÁY BƠM');
+const idMist = document.getElementById('TRẠNG THÁI PHUN SƯƠNG');
+const idFan = document.getElementById('TRẠNG THÁI QUẠT');
+
+dbSolid.on("value", (snap) => {
+  solid.innerText = snap.val() + " %"
+  if (snap.val() >= 20 && !flag) {
+    idPump.checked = true;
+    togglePump(idPump);
+  }
+  else {
+    idPump.checked = false;
+    togglePump(idPump);
+  }
+});
+
+dbHumi.on("value", (snap) => {
+  huminity.innerText = snap.val() + " %"
+  if (snap.val() <= 20 && !flag) {
+    idMist.checked = true;
+    toggleMist(idMist);
+  }
+  else {
+    idMist.checked = false;
+    toggleMist(idMist);
+  }
+});
+
+dbTemp.on("value", (snap) => {
+  temparute.innerText = snap.val() + " °C"
+  if (snap.val() >= 20 && !flag) {
+    idFan.checked = true;
+    toggleFan(idFan);
+  }
+  else {
+    idFan.checked = false;
+    toggleFan(idFan);
+  }
+});
 // end
 
 function toggleLight(element) {
@@ -52,11 +88,20 @@ function toggleMist(element) {
   } else firebase.database().ref(element.id.toString()).set({ Status: "phun_off" });
 }
 
+let flag = false;
 function mode(element) {
   let state;
   if (element.checked) {
+    flag = true;
     firebase.database().ref(element.id.toString()).set("manual");
+    idFan.checked = false;
+    idPump.checked = false;
+    idMist.checked = false;
+    toggleFan(idFan);
+    togglePump(idPump);
+    toggleMist(idMist);
   } else {
+    flag = false;
     firebase.database().ref(element.id.toString()).set("auto");
   }
 }
