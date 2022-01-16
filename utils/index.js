@@ -27,18 +27,36 @@ dbHumi.on("value", (snap) => (huminity.innerText = snap.val() + " %"));
 dbTemp.on("value", (snap) => (temparute.innerText = snap.val() + " °C"));
 // end
 
-function toggleCheckbox(element) {
+function toggleLight(element) {
   let state;
   if (element.checked) {
-    firebase.database().ref(element.id.toString()).set({ Status: "On" });
-  } else firebase.database().ref(element.id.toString()).set({ Status: "Off" });
+    firebase.database().ref(element.id.toString()).set({ Status: "den_on" });
+  } else firebase.database().ref(element.id.toString()).set({ Status: "den_off" });
+}
+function toggleFan(element) {
+  let state;
+  if (element.checked) {
+    firebase.database().ref(element.id.toString()).set({ Status: "quat_on" });
+  } else firebase.database().ref(element.id.toString()).set({ Status: "quat_off" });
+}
+function togglePump(element) {
+  let state;
+  if (element.checked) {
+    firebase.database().ref(element.id.toString()).set({ Status: "bom_on" });
+  } else firebase.database().ref(element.id.toString()).set({ Status: "bom_off" });
+}
+function toggleMist(element) {
+  let state;
+  if (element.checked) {
+    firebase.database().ref(element.id.toString()).set({ Status: "phun_on" });
+  } else firebase.database().ref(element.id.toString()).set({ Status: "phun_off" });
 }
 
 function mode(element) {
   let state;
   if (element.checked) {
-    firebase.database().ref(element.id.toString()).set("Manual");
+    firebase.database().ref(element.id.toString()).set("manual");
   } else {
-    firebase.database().ref(element.id.toString()).set("Auto");
+    firebase.database().ref(element.id.toString()).set("auto");
   }
 }
