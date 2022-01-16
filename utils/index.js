@@ -25,10 +25,11 @@ const dbTemp = firebase.database().ref().child("DỮ LIỆU/NHIỆT ĐỘ");
 const idPump = document.getElementById('TRẠNG THÁI MÁY BƠM');
 const idMist = document.getElementById('TRẠNG THÁI PHUN SƯƠNG');
 const idFan = document.getElementById('TRẠNG THÁI QUẠT');
+let flag = false;
 
 dbSolid.on("value", (snap) => {
   solid.innerText = snap.val() + " %"
-  if (!flag) {
+  if (flag === false) {
     if (snap.val() <= 85) {
       idPump.checked = true;
       togglePump(idPump);
@@ -39,13 +40,14 @@ dbSolid.on("value", (snap) => {
     }
   }
   else {
+    console.log(idPump.checked)
     togglePump(idPump);
   }
 });
 
 dbHumi.on("value", (snap) => {
   huminity.innerText = snap.val() + " %"
-  if (!flag) {
+  if (flag === false) {
     if (snap.val() <= 80) {
       idMist.checked = true;
       toggleMist(idMist);
@@ -62,7 +64,7 @@ dbHumi.on("value", (snap) => {
 
 dbTemp.on("value", (snap) => {
   temparute.innerText = snap.val() + " °C"
-  if (!flag) {
+  if (flag === false) {
     if (snap.val() >= 28) {
       idFan.checked = true;
       toggleFan(idFan);
@@ -109,7 +111,6 @@ function toggleMist(element) {
   } else firebase.database().ref(element.id.toString()).set({ Status: "phun_off" });
 }
 
-let flag = false;
 function mode(element) {
   let state;
   if (element.checked) {
@@ -118,6 +119,9 @@ function mode(element) {
     idFan.checked = false;
     idPump.checked = false;
     idMist.checked = false;
+    toggleFan(idFan);
+    togglePump(idPump);
+    toggleMist(idMist);
   } else {
     flag = false;
     firebase.database().ref(element.id.toString()).set("auto");
