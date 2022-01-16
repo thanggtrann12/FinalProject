@@ -28,36 +28,51 @@ const idFan = document.getElementById('TRẠNG THÁI QUẠT');
 
 dbSolid.on("value", (snap) => {
   solid.innerText = snap.val() + " %"
-  if (snap.val() >= 20 && !flag) {
-    idPump.checked = true;
-    togglePump(idPump);
+  if (!flag) {
+    if (snap.val() <= 85) {
+      idPump.checked = true;
+      togglePump(idPump);
+    }
+    else {
+      idPump.checked = false;
+      togglePump(idPump);
+    }
   }
   else {
-    idPump.checked = false;
     togglePump(idPump);
   }
 });
 
 dbHumi.on("value", (snap) => {
   huminity.innerText = snap.val() + " %"
-  if (snap.val() <= 20 && !flag) {
-    idMist.checked = true;
-    toggleMist(idMist);
+  if (!flag) {
+    if (snap.val() <= 80) {
+      idMist.checked = true;
+      toggleMist(idMist);
+    }
+    else {
+      idMist.checked = false;
+      toggleMist(idMist);
+    }
   }
   else {
-    idMist.checked = false;
     toggleMist(idMist);
   }
 });
 
 dbTemp.on("value", (snap) => {
   temparute.innerText = snap.val() + " °C"
-  if (snap.val() >= 20 && !flag) {
-    idFan.checked = true;
-    toggleFan(idFan);
+  if (!flag) {
+    if (snap.val() >= 28) {
+      idFan.checked = true;
+      toggleFan(idFan);
+    }
+    else {
+      idFan.checked = false;
+      toggleFan(idFan);
+    }
   }
   else {
-    idFan.checked = false;
     toggleFan(idFan);
   }
 });
@@ -71,9 +86,15 @@ function toggleLight(element) {
 }
 function toggleFan(element) {
   let state;
+
   if (element.checked) {
+    console.log("quat_on")
     firebase.database().ref(element.id.toString()).set({ Status: "quat_on" });
-  } else firebase.database().ref(element.id.toString()).set({ Status: "quat_off" });
+  }
+  else {
+    firebase.database().ref(element.id.toString()).set({ Status: "quat_off" });
+    console.log("quat_off")
+  }
 }
 function togglePump(element) {
   let state;
@@ -97,9 +118,6 @@ function mode(element) {
     idFan.checked = false;
     idPump.checked = false;
     idMist.checked = false;
-    toggleFan(idFan);
-    togglePump(idPump);
-    toggleMist(idMist);
   } else {
     flag = false;
     firebase.database().ref(element.id.toString()).set("auto");
